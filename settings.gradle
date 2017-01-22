@@ -1,0 +1,3 @@
+rootProject.name = 'akka-example'
+include 'akka-example-guice'
+

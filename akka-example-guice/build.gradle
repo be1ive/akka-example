@@ -1,0 +1,14 @@
+description = 'Akka Example Guice'
+
+dependencies {
+    compile 'com.typesafe.akka:akka-actor_2.12:' + akkaVersion
+    compile 'com.typesafe.akka:akka-remote_2.12:' + akkaVersion
+    compile 'com.typesafe.akka:akka-cluster_2.12:' + akkaVersion
+    compile 'com.typesafe.akka:akka-cluster-tools_2.12:' + akkaVersion
+    compile 'com.typesafe.akka:akka-slf4j_2.12:' + akkaVersion
+    compile 'com.google.inject:guice:' + guiceVersion
+    compile 'com.google.guava:guava:' + guavaVersion
+
+    compile 'io.kamon:kamon-core_2.12:' + kamonVersion
+
+}

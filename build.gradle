@@ -1,0 +1,48 @@
+configurations.all {
+    resolutionStrategy.force "org.scala-lang:scala-library:" + scalaVersion
+}
+
+
+allprojects  {
+
+    repositories{
+        mavenCentral()
+        mavenLocal()
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'scala'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group = 'com.example.akka'
+    version = '2017-01-01-SNAPSHOT'
+
+    dependencies {
+        compile 'org.scala-lang:scala-library:' + scalaVersion
+    }
+
+
+}
+
+subprojects {
+
+    tasks.withType(ScalaCompile) {
+        ScalaCompileOptions.metaClass.daemonServer = true
+        ScalaCompileOptions.metaClass.fork = true
+        ScalaCompileOptions.metaClass.useAnt = false
+        ScalaCompileOptions.metaClass.useCompileDaemon = false
+    }
+
+    task sourcesJar ( type: Jar, dependsOn: classes ) {
+        classifier 'sources'
+        from sourceSets.main.allJava
+    }
+
+    jar {
+        exclude('*.conf')
+        exclude('*.properties')
+        exclude('logback.*')
+    }
+}
